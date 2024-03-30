@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9bc552f-01a9-435d-93ec-7a21d8193e06" name="Changes" comment="Made GUI, change SPotipy API for GUI">
+    <list default="true" id="d9bc552f-01a9-435d-93ec-7a21d8193e06" name="Changes" comment="Added WIndow.py and SPotipy GUI.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Another Gui test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Another Gui test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstModel.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/FirstModel.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpotipyGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/SpotipyGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Lily Laughs.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Lily Laughs.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/window.py" beforeDir="false" afterPath="$PROJECT_DIR$/window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +57,13 @@
     &quot;Python.Another Gui test.executor&quot;: &quot;Run&quot;,
     &quot;Python.GUI.executor&quot;: &quot;Run&quot;,
     &quot;Python.Modeltest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OriWIndow.executor&quot;: &quot;Run&quot;,
     &quot;Python.Spotify API.executor&quot;: &quot;Run&quot;,
+    &quot;Python.SpotipyGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
     &quot;Python.anotherone.executor&quot;: &quot;Run&quot;,
+    &quot;Python.audio.executor&quot;: &quot;Run&quot;,
+    &quot;Python.extract.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.window.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -64,7 +74,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -74,7 +84,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.window">
-    <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Another Gui test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FYP(Music Recommender SER)" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,7 +98,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Another Gui test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,7 +154,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\mirza\PycharmProjects\FYP(Music Recommender SER)\SpotipyGUI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SpotipyGUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,7 +163,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FYP(Music Recommender SER)" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -167,7 +177,30 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="audio" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FYP(Music Recommender SER)" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/audio.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -202,16 +235,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.window" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.SpotipyGUI" />
-        <item itemvalue="Python.GUI" />
+        <item itemvalue="Python.audio" />
+        <item itemvalue="Python.Another Gui test" />
+        <item itemvalue="Python.Test" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
+        <option value="bundled-python-sdk-09665e90c3a7-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.15026.15" />
       </set>
     </attachedChunks>
   </component>
@@ -254,6 +288,18 @@
       <workItem from="1710878437113" duration="6457000" />
       <workItem from="1710957009555" duration="3073000" />
       <workItem from="1710967708349" duration="3935000" />
+      <workItem from="1711019101556" duration="140000" />
+      <workItem from="1711048539635" duration="9887000" />
+      <workItem from="1711092410576" duration="2813000" />
+      <workItem from="1711095339344" duration="443000" />
+      <workItem from="1711310609672" duration="2944000" />
+      <workItem from="1711313694391" duration="3273000" />
+      <workItem from="1711395652339" duration="506000" />
+      <workItem from="1711398264104" duration="292000" />
+      <workItem from="1711485380561" duration="3493000" />
+      <workItem from="1711570335225" duration="3753000" />
+      <workItem from="1711634008905" duration="4798000" />
+      <workItem from="1711648479968" duration="5146000" />
     </task>
     <task id="LOCAL-00001" summary="Made GUI, change SPotipy API for GUI">
       <option name="closed" value="true" />
@@ -263,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710960056781</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added WIndow.py and SPotipy GUI.py">
+      <option name="closed" value="true" />
+      <created>1711019162437</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711019162437</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,15 +336,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made GUI, change SPotipy API for GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made GUI, change SPotipy API for GUI" />
+    <MESSAGE value="Added WIndow.py and SPotipy GUI.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added WIndow.py and SPotipy GUI.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1710879260669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$window.coverage" NAME="window Coverage Results" MODIFIED="1710969202494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$Modeltest.coverage" NAME="Modeltest Coverage Results" MODIFIED="1702473710978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$Another_Gui_test.coverage" NAME="Another Gui test Coverage Results" MODIFIED="1710342259135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$Spotify_API.coverage" NAME="Spotify API Coverage Results" MODIFIED="1710882007517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$Test.coverage" NAME="Test Coverage Results" MODIFIED="1711571850999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$Another_Gui_test.coverage" NAME="Another Gui test Coverage Results" MODIFIED="1711635034173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$main.coverage" NAME="main Coverage Results" MODIFIED="1710881209581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1710879260669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$window.coverage" NAME="window Coverage Results" MODIFIED="1711652934224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$OriWIndow.coverage" NAME="OriWIndow Coverage Results" MODIFIED="1711570420057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$audio.coverage" NAME="audio Coverage Results" MODIFIED="1711635591481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$Spotify_API.coverage" NAME="Spotify API Coverage Results" MODIFIED="1711092603810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$SpotipyGUI.coverage" NAME="SpotipyGUI Coverage Results" MODIFIED="1711651685371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$anotherone.coverage" NAME="anotherone Coverage Results" MODIFIED="1710879672295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FYP_Music_Recommender_SER_$extract.coverage" NAME="extract Coverage Results" MODIFIED="1711570407955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

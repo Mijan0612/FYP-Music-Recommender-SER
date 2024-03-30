@@ -3,7 +3,6 @@ import spotipy
 import random
 from spotipy.oauth2 import SpotifyClientCredentials
 
-
 class SpotifyClient:
     def __init__(self, client_id, client_secret):
         # Set the environment variables for Spotify credentials
@@ -17,18 +16,42 @@ class SpotifyClient:
     def get_recommended_song(self, emotion):
         # Define playlists for different emotions
         playlists = {
-            'sad': '37i9dQZF1DWV3IJ2kse1M3',
-            'anxiety': '37i9dQZF1DX8gS5vh05dnc',
-            'hate': '37i9dQZF1DX3YSRoSdA634',
-            'happy': '37i9dQZF1DXdPec7aLTmlC',
-            'angry': '37i9dQZF1DX1s9knjP51Oa',
-            'boring': '37i9dQZF1DWWjGdmeTyeJ6',
-            'neutral': '37i9dQZF1DX7K31D69s4M1'
+            'sad': ['37i9dQZF1DWV3IJ2kse1M3', '37i9dQZF1DX3YSRoSdA634'],
+            'calm': ['37i9dQZF1DX8gS5vh05dnc', '37i9dQZF1DX3YSRoSdA634'], # recommend chill, acoustics or instrumental songs
+            'happy': ['37i9dQZF1DXdPec7aLTmlC', '37i9dQZF1DX3YSRoSdA634'],
+            'angry': ['3WCNV5vELtEnnXdTe3H67C', '37i9dQZF1DX3YSRoSdA634'],
+            'neutral': ['37i9dQZF1DX7K31D69s4M1', '37i9dQZF1DX3YSRoSdA634']# if neutral, recommend calm or happy songs
         }
 
-        playlist_id = playlists.get(emotion)
-        if playlist_id:
-            tracks = self.sp.playlist_tracks(playlist_id=playlist_id)['items']
+        # Define messages for each emotion
+        messages = {
+            'sad': [
+                "Listen to this song from Playlist 1 to reflect on your emotions.",
+                "This song from Playlist 2 might help you through a tough time."
+            ],
+            'calm': [
+                "Relax and unwind with this calming tune from Playlist 1.",
+                "Let this song from Playlist 2 bring peace to your mind."
+            ],
+            'happy': [
+                "Get ready to dance with this upbeat track from Playlist 1!",
+                "This song from Playlist 2 is sure to lift your spirits."
+            ],
+            'angry': [
+                "Feeling furious? Blast this song from Playlist 1 to let it out!",
+                "Let this high-energy track from Playlist 2 match your intensity."
+            ],
+            'neutral': [
+                "In a neutral mood? Enjoy this easygoing song from Playlist 1.",
+                "Let this song from Playlist 2 add a touch of brightness to your day."
+            ]
+        }
+
+        playlist_ids = playlists.get(emotion)
+        if playlist_ids:
+            chosen_playlist_id = random.choice(playlist_ids)
+            playlist_index = playlists[emotion].index(chosen_playlist_id)
+            tracks = self.sp.playlist_tracks(playlist_id=chosen_playlist_id)['items']
             if tracks:
                 selected_track = random.choice(tracks)['track']
                 song_details = {
@@ -37,8 +60,11 @@ class SpotifyClient:
                     'image_link': selected_track['album']['images'][2]['url'],
                     'preview_url': selected_track['preview_url']
                 }
-                return song_details
-        return None
+
+                message = messages[emotion][playlist_index]
+
+                return song_details, message
+        return None, None
 
 
 # Example usage:
@@ -46,8 +72,9 @@ if __name__ == '__main__':
     client_id = 'fd8268198c88420db0343ca9b067cc15'
     client_secret = '44fbe87c03bf483496089d56206da509'
     spotify_client = SpotifyClient(client_id, client_secret)
-    recommended_song = spotify_client.get_recommended_song('happy')
+    recommended_song, message = spotify_client.get_recommended_song('sad')
     if recommended_song:
-        print(recommended_song)
+        print("Recommended Song:", recommended_song)
+        print("Message:", message)
     else:
         print("No song found.")

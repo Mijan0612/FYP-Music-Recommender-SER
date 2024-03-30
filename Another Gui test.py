@@ -20,7 +20,7 @@ class VoiceRecorderApp(QMainWindow):
         self.status_label = QLabel("", self)
         self.status_label.setGeometry(50, 100, 300, 30)
 
-        self.output_file = "recording.wav"
+        self.output_file = "recording2.wav"
 
     def start_recording(self):
         self.status_label.setText("Recording...")
