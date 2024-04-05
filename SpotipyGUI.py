@@ -19,7 +19,7 @@ class SpotifyClient:
             'sad': ['37i9dQZF1DWV3IJ2kse1M3', '37i9dQZF1DX3YSRoSdA634'],
             'calm': ['37i9dQZF1DX8gS5vh05dnc', '37i9dQZF1DX3YSRoSdA634'], # recommend chill, acoustics or instrumental songs
             'happy': ['37i9dQZF1DXdPec7aLTmlC', '37i9dQZF1DX3YSRoSdA634'],
-            'angry': ['3WCNV5vELtEnnXdTe3H67C', '37i9dQZF1DX3YSRoSdA634'],
+            'angry': ['37i9dQZF1DXdPec7aLTmlC', '37i9dQZF1DX3YSRoSdA634'],
             'neutral': ['37i9dQZF1DX7K31D69s4M1', '37i9dQZF1DX3YSRoSdA634']# if neutral, recommend calm or happy songs
         }
 
@@ -57,7 +57,7 @@ class SpotifyClient:
                 song_details = {
                     'name': selected_track['name'],
                     'artist': selected_track['artists'][0]['name'],
-                    'image_link': selected_track['album']['images'][2]['url'],
+                    'image_link': selected_track['album']['images'][1]['url'],
                     'preview_url': selected_track['preview_url']
                 }
 
