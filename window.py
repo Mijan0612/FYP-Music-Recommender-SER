@@ -25,12 +25,12 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         super().__init__()
         self.client_id = client_id
         self.client_secret = client_secret
-        self.setWindowTitle("Music Recommends")
+        self.setWindowTitle("MuSeek!")
 
         self.stack = QtWidgets.QStackedWidget(self)
         self.setCentralWidget(self.stack)
-        self.resize(450, 600)
-        self.setStyleSheet("background-color: lightblue")
+        self.setFixedSize(500, 700)
+        self.setStyleSheet("background-color: lemonchiffon")
 
         self.page1 = HomePage(self)
         self.page2 = SpotifyPage(self, client_id, client_secret)
@@ -80,23 +80,37 @@ class HomePage(QtWidgets.QWidget):
 
         labelLayout = QtWidgets.QHBoxLayout()
 
-
+        labelLayout.addSpacing(20)
         leftIcon = QtWidgets.QLabel(self)
-        leftPixmap = QtGui.QPixmap("feather/slack.svg")  # Replace "left_icon.png" with your icon path
-        leftIcon.setPixmap(leftPixmap)
-        labelLayout.addWidget(leftIcon)
+        leftPixmap = QtGui.QPixmap("feather/headphones.png")  # Replace "left_icon.png" with your icon path
+        scaledLeft = leftPixmap.scaled(45, 45, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation)
+        leftIcon.setPixmap(scaledLeft)
+        labelLayout.addWidget(leftIcon, alignment=QtCore.Qt.AlignLeft)
 
-
-        self.label = QtWidgets.QLabel("    Emotion-based\nMusic Recommender", self)
-        self.label.setStyleSheet("font-family: Papyrus; font-size: 35px; font-weight")
+        self.label = QtWidgets.QLabel("MuSeek!", self)
+        self.label.setStyleSheet("font-family: Papyrus; font-size: 30px; font-weight: bold;")
         labelLayout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
 
         rightIcon = QtWidgets.QLabel(self)
-        rightPixmap = QtGui.QPixmap("feather/award.svg")  # Replace "right_icon.png" with your icon path
-        rightIcon.setPixmap(rightPixmap)
-        labelLayout.addWidget(rightIcon)
+        rightPixmap = QtGui.QPixmap("feather/music-note.png")  # Replace "right_icon.png" with your icon path
+        scaledRight = rightPixmap.scaled(64, 64, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation)
+        rightIcon.setPixmap(scaledRight)
+        labelLayout.addWidget(rightIcon, alignment=QtCore.Qt.AlignRight)
 
-        self.layout.addLayout(labelLayout)
+        labelLayout.addSpacing(20)
+
+        self.layout.addLayout(labelLayout)  # Add labelLayout to the main layout
+
+        anotherLabel = QtWidgets.QLabel("<center>Emotion-based<br>Music Recommender</center>", self)
+        anotherLabel.setStyleSheet("font-family: Arial; font-size: 16px; color: red;")  # Example style
+        anotherLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.layout.addWidget(anotherLabel)
+
+        # Add a new label below the existing labels
+        newLabel = QtWidgets.QLabel("Record now to get songs recommendation!", self)
+        newLabel.setStyleSheet("font-family: Arial; font-size: 10px; color: blue;")  # Example style
+        newLabel.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignBottom)
+        self.layout.addWidget(newLabel)
 
         self.recordingFinished.connect(parent.show_loading_screen)
 
@@ -115,13 +129,13 @@ class HomePage(QtWidgets.QWidget):
         self.recordButton.setFixedSize(50, 50)  # Set a fixed size for the button
         self.recordButton.setStyleSheet("border: none;")  # Remove border from the button
         self.recordButton.clicked.connect(self.toggle_recording)
+        self.recordButton.setToolTip("Start Recording")
 
         # Add the button to the button layout
         buttonLayout.addWidget(self.recordButton, alignment=QtCore.Qt.AlignCenter)
 
         # Apply padding to the QFrame
-        self.recordButtonFrame.setStyleSheet("padding: 5px; border-radius: 25px; border: 3px solid black; "
-                                             "background-color: Blue;")
+        self.recordButtonFrame.setStyleSheet("padding: 5px; border-radius: 25px; border: 3px solid black;")
 
         self.is_recording = False
         self.frames = []
@@ -144,8 +158,9 @@ class HomePage(QtWidgets.QWidget):
         InfoButton.setIcon(InfoIcon)
         InfoButton.setIconSize(QtCore.QSize(20, 20))  # Set the size of the icon
         InfoButton.setFixedSize(30, 30)  # Set a fixed size to make it circular
-        InfoButton.setStyleSheet("border-radius: 60px; color: red; background-color: white;")  # Circular button style
+        InfoButton.setStyleSheet("border-radius: 60px; color: red;")  # Circular button style
         InfoButton.clicked.connect(self.parent().go_to_info_page)  # Connect to the appropriate method
+        InfoButton.setToolTip("Information")
 
         self.layout.addWidget(InfoButton)
 
@@ -171,6 +186,7 @@ class HomePage(QtWidgets.QWidget):
             self.recordButton.setIcon(QIcon("feather/square.svg"))
             self.recordButton.setIconSize(QtCore.QSize(50, 50))  # Set the size of the icon
             self.recordButton.setFixedSize(50, 50)  # Set a fixed size to make it circular
+            self.recordButton.setToolTip("Stop Recording")
             self.is_recording = True
             self.frames = []  # Reset frames list for a new recording
             try:
