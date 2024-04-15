@@ -16,11 +16,11 @@ class SpotifyClient:
     def get_recommended_song(self, emotion):
         # Define playlists for different emotions
         playlists = {
-            'sad': ['37i9dQZF1DWV3IJ2kse1M3', '37i9dQZF1DX3YSRoSdA634'],
-            'calm': ['37i9dQZF1DX8gS5vh05dnc', '37i9dQZF1DX3YSRoSdA634'], # recommend chill, acoustics or instrumental songs
-            'happy': ['37i9dQZF1DXdPec7aLTmlC', '37i9dQZF1DX3YSRoSdA634'],
-            'angry': ['37i9dQZF1DXdPec7aLTmlC', '37i9dQZF1DX3YSRoSdA634'],
-            'neutral': ['37i9dQZF1DX7K31D69s4M1', '37i9dQZF1DX3YSRoSdA634']# if neutral, recommend calm or happy songs
+            'sad': ['37i9dQZF1DWV3IJ2kse1M3'],
+            'calm': ['37i9dQZF1DX8gS5vh05dnc'], # recommend chill, acoustics or instrumental songs
+            'happy': ['37i9dQZF1DXdPec7aLTmlC'],
+            'angry': ['37i9dQZF1DXdPec7aLTmlC'],
+            'neutral': ['37i9dQZF1DX7K31D69s4M1']# if neutral, recommend calm or happy songs
         }
 
         # Define messages for each emotion
@@ -58,6 +58,7 @@ class SpotifyClient:
                     'name': selected_track['name'],
                     'artist': selected_track['artists'][0]['name'],
                     'image_link': selected_track['album']['images'][1]['url'],
+                    'spotify_uri': selected_track['uri'],
                     'preview_url': selected_track['preview_url']
                 }
 
@@ -74,7 +75,9 @@ if __name__ == '__main__':
     spotify_client = SpotifyClient(client_id, client_secret)
     recommended_song, message = spotify_client.get_recommended_song('sad')
     if recommended_song:
+        song_link = f"https://open.spotify.com/track/{recommended_song['spotify_uri'].split(':')[-1]}"
         print("Recommended Song:", recommended_song)
+        print("Song Link:", song_link)
         print("Message:", message)
     else:
         print("No song found.")
