@@ -45,6 +45,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.stack.addWidget(self.infoPage)
         self.loadingPage.predictedEmotion.connect(self.page2.fetch_song_details)
 
+        self.recorded_songs = []  # List to store recorded songs' details
+
     def handle_emotion(self, emotion):
         # Use the detected emotion to decide what to do next
         print(f"Detected emotion: {emotion}")  # For demonstration
@@ -92,7 +94,7 @@ class HomePage(QtWidgets.QWidget):
         labelLayout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
 
         rightIcon = QtWidgets.QLabel(self)
-        rightPixmap = QtGui.QPixmap("feather/music-note.png")  # Replace "right_icon.png" with your icon path
+        rightPixmap = QtGui.QPixmap("feather/music-note.png")
         scaledRight = rightPixmap.scaled(64, 64, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation)
         rightIcon.setPixmap(scaledRight)
         labelLayout.addWidget(rightIcon, alignment=QtCore.Qt.AlignRight)
@@ -114,29 +116,6 @@ class HomePage(QtWidgets.QWidget):
 
         self.recordingFinished.connect(parent.show_loading_screen)
 
-        # Create a QFrame widget to wrap the icon
-        self.recordButtonFrame = QtWidgets.QFrame(self)
-        self.recordButtonFrame.setObjectName("RecordButtonFrame")  # Set object name for styling
-        self.layout.addWidget(self.recordButtonFrame, alignment=QtCore.Qt.AlignCenter)
-
-        # Create a QHBoxLayout for the button layout
-        buttonLayout = QtWidgets.QHBoxLayout(self.recordButtonFrame)
-
-        # Create the QPushButton with the mic icon
-        self.recordButton = QtWidgets.QPushButton(self.recordButtonFrame)
-        self.recordButton.setIcon(QIcon("feather/mic.svg"))
-        self.recordButton.setIconSize(QtCore.QSize(50, 50))  # Set the size of the icon
-        self.recordButton.setFixedSize(50, 50)  # Set a fixed size for the button
-        self.recordButton.setStyleSheet("border: none;")  # Remove border from the button
-        self.recordButton.clicked.connect(self.toggle_recording)
-        self.recordButton.setToolTip("Start Recording")
-
-        # Add the button to the button layout
-        buttonLayout.addWidget(self.recordButton, alignment=QtCore.Qt.AlignCenter)
-
-        # Apply padding to the QFrame
-        self.recordButtonFrame.setStyleSheet("padding: 5px; border-radius: 25px; border: 3px solid black;")
-
         self.is_recording = False
         self.frames = []
         self.p = None
@@ -146,34 +125,62 @@ class HomePage(QtWidgets.QWidget):
         self.feature_extraction = FeatureExtraction()
         self.feature_extraction.load_model()
 
-        # Create a button to navigate to the new page
-        self.add_info_button()
+        self.record_button()
 
-        self.add_close_button()
+        self.info_button()
 
-    def add_info_button(self):
+        self.close_button()
+
+    def record_button(self):
+        # Create a QFrame widget to wrap the icon
+        self.recordButtonFrame = QtWidgets.QFrame(self)
+        self.recordButtonFrame.setObjectName("RecordButtonFrame")  # Set object name for styling
+
+        self.layout.addWidget(self.recordButtonFrame, alignment=QtCore.Qt.AlignCenter)
+
+        # Create a QHBoxLayout for the button layout
+        buttonLayout = QtWidgets.QHBoxLayout(self.recordButtonFrame)
+
+        RecordIcon = QIcon("feather/mic.svg")
+        self.recordButton = QtWidgets.QPushButton(self.recordButtonFrame)
+        self.recordButton.setIcon(RecordIcon)
+        self.recordButton.setIconSize(QtCore.QSize(50, 50))  # Set the size of the icon
+        self.recordButton.setFixedSize(50, 50)  # Set a fixed size for the button
+        self.recordButton.setStyleSheet("border: none;")  # Remove border from the button
+        self.recordButton.clicked.connect(self.toggle_recording)  # Connect to the appropriate method
+        self.recordButton.setToolTip("Start Recording")
+
+        # Add the button to the button layout
+        buttonLayout.addWidget(self.recordButton, alignment=QtCore.Qt.AlignCenter)
+
+        # Apply padding to the QFrame
+        self.recordButtonFrame.setStyleSheet("padding: 5px; border-radius: 25px; border: 3px solid black; "
+                                             "background-color: white;")
+        self.setStyleSheet("""QToolTip { background-color: white; color: grey; border: groove 2px; }""")
+
+    def info_button(self):
 
         InfoIcon = QIcon("feather/info.svg")
         InfoButton = QtWidgets.QPushButton(self)
         InfoButton.setIcon(InfoIcon)
-        InfoButton.setIconSize(QtCore.QSize(20, 20))  # Set the size of the icon
+        InfoButton.setIconSize(QtCore.QSize(30, 30))  # Set the size of the icon
         InfoButton.setFixedSize(30, 30)  # Set a fixed size to make it circular
-        InfoButton.setStyleSheet("border-radius: 60px; color: red;")  # Circular button style
+        InfoButton.setStyleSheet("border-radius: 60px;")  # Circular button style
         InfoButton.clicked.connect(self.parent().go_to_info_page)  # Connect to the appropriate method
         InfoButton.setToolTip("Information")
 
         self.layout.addWidget(InfoButton)
 
-    def add_close_button(self):
+    def close_button(self):
 
-        closeIcon = QIcon("feather/x-circle.svg")
+        closeIcon = QIcon("feather/close.svg")
 
         # Create the QPushButton with the close icon
         closeButton = QtWidgets.QPushButton(self)
         closeButton.setIcon(closeIcon)
         closeButton.setIconSize(QtCore.QSize(30, 30))  # Set the size of the icon
         closeButton.setFixedSize(30, 30)  # Set a fixed size to make it circular
-        closeButton.setStyleSheet("border-radius: 60px; color: red;")  # Circular button style
+        closeButton.setStyleSheet("border-radius: 60px;")  # Circular button style
         closeButton.clicked.connect(self.parent().close_application)
         closeButton.setToolTip("Close Application")  # Add a tooltip
 
@@ -256,16 +263,42 @@ class InfoPage(QtWidgets.QWidget):
         super().__init__(parent)
         self.layout = QtWidgets.QVBoxLayout(self)
 
-        label = QtWidgets.QLabel("New Page", self)
+        label_text = self.read_text("info.txt")
+
+        label = QtWidgets.QLabel(label_text, self)  # Use the read text as label text
+        label.setStyleSheet("font-family: Arial; font-size: 16px;")
         self.layout.addWidget(label, alignment=QtCore.Qt.AlignCenter)
 
-        self.homeButton = QtWidgets.QPushButton("Back to Home Page", self)
-        self.homeButton.clicked.connect(self.on_home_button_clicked)
-        self.layout.addWidget(self.homeButton, alignment=QtCore.Qt.AlignCenter)
+        self.add_home_button()
+
+    def read_text(self, file_path):
+        try:
+            with open(file_path, "r") as file:
+                label_text = file.read()
+            return label_text
+        except FileNotFoundError:
+            print(f"Error: File '{file_path}' not found.")
+            return "Label Text Not Found"
+
+    def add_home_button(self):
+
+        returnIcon = QtGui.QIcon("feather/return.svg")
+
+        # Create the QPushButton with the close icon
+        homeButton = QtWidgets.QPushButton("\tBack to Home Page", self)
+        homeButton.setIcon(returnIcon)
+        homeButton.setIconSize(QtCore.QSize(20, 20))
+        homeButton.setFixedSize(140, 50)
+        homeButton.setStyleSheet("padding: 5px; border-radius: 20px; border: 1px solid black; "
+                                 "background-color: white;")
+        homeButton.clicked.connect(self.on_home_button_clicked)
+
+        self.layout.addWidget(homeButton, alignment=QtCore.Qt.AlignCenter)
 
     def on_home_button_clicked(self):
         # Emit the signal when the button is clicked
         self.requestHomePage.emit()
+
 
 class LoadingScreen(QtWidgets.QWidget):
     # Define the predictedEmotion signal
@@ -280,6 +313,8 @@ class LoadingScreen(QtWidgets.QWidget):
 
 
 class SpotifyPage(QtWidgets.QWidget):
+    songIdentified = pyqtSignal(dict)
+
     def __init__(self, parent, client_id, client_secret):
         super().__init__(parent)
         self.spotify_client = SpotifyClient(client_id, client_secret)
@@ -305,11 +340,16 @@ class SpotifyPage(QtWidgets.QWidget):
         self.songLayout.addLayout(self.textLayout)  # Add text layout to song layout
         self.layout.addLayout(self.songLayout)
 
-        self.returnButton = QtWidgets.QPushButton("Return to Home Page", self)
-        self.returnButton.clicked.connect(parent.return_to_home_page)  # Connect to the parent's method
-        self.layout.addWidget(self.returnButton)
-
+        self.add_return_button(parent.return_to_home_page)
         self.add_close_button()
+
+    def add_return_button(self, function):
+        self.returnButton = QtWidgets.QPushButton("Return to Home Page", self)
+        self.returnButton.setFixedSize(140, 50)
+        self.returnButton.setStyleSheet("padding: 5px; border-radius: 20px; border: 1px solid black; "
+                                        "background-color: white;")
+        self.returnButton.clicked.connect(function)  # Connect to the provided function
+        self.layout.addWidget(self.returnButton, alignment=QtCore.Qt.AlignCenter)
 
     def add_close_button(self):
         closeIcon = QIcon("feather/x-circle.svg")
@@ -328,12 +368,15 @@ class SpotifyPage(QtWidgets.QWidget):
     def fetch_song_details(self, emotion):
         song_details, playlist_message = self.spotify_client.get_recommended_song(emotion)
         if song_details:
+            song_link = f"https://open.spotify.com/track/{song_details['spotify_uri'].split(':')[-1]}"
             self.songLabel.setText(f"<div style='text-align: center; font-size: 16px;'>"
                                    f"{song_details['name']} by {song_details['artist']}</div>")
             self.display_song_image(song_details['image_link'])
             if playlist_message:
                 self.label.setText(f"<div style='text-align: center; font-size: 16px;'>"
                                    f"{playlist_message}</div>")
+            self.songIdentified.emit(song_details)
+
         else:
             self.songLabel.setText("Failed to fetch song.")
 
