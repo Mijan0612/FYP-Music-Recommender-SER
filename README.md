@@ -10,7 +10,7 @@ pip install -r requirements.txt
 To download the RAVDESS dataset, please use this link
 
 https://drive.google.com/drive/folders/1n6yqU7ol1BgM0ZDTisrSXIvXxOBUhVoY?usp=sharing
-or
+/n or
 
 
 To run the app, in the terminal write this command
