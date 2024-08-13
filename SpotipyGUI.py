@@ -70,8 +70,9 @@ class SpotifyClient:
 
 # Example usage:
 if __name__ == '__main__':
-    client_id = 'fd8268198c88420db0343ca9b067cc15'
-    client_secret = '44fbe87c03bf483496089d56206da509'
+    # Put own ID and SECRET
+    client_id = 'OWN ID'
+    client_secret = 'OWN SECRET' 
     spotify_client = SpotifyClient(client_id, client_secret)
     recommended_song, message = spotify_client.get_recommended_song('sad')
     if recommended_song:
