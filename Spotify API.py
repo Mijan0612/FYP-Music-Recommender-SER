@@ -3,8 +3,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import random
 
-client_id = 'fd8268198c88420db0343ca9b067cc15'
-client_secret = '44fbe87c03bf483496089d56206da509'
+# Put own ID and SECRET
+    client_id = 'OWN ID'
+    client_secret = 'OWN SECRET' 
 
 os.environ['SPOTIPY_CLIENT_ID'] = client_id
 os.environ['SPOTIPY_CLIENT_SECRET'] = client_secret
