@@ -398,8 +398,9 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
 
-    client_id = 'fd8268198c88420db0343ca9b067cc15'
-    client_secret = '44fbe87c03bf483496089d56206da509'
+    # Put own ID and SECRET
+    client_id = 'OWN ID'
+    client_secret = 'OWN SECRET' 
 
     ui = Ui_MainWindow(client_id, client_secret)
     ui.show()
